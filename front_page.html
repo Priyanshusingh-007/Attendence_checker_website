@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Portal</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      width: 100%;
+      min-height: 100%;
+      font-family: "Times New Roman", Times, serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* =========================================================
+       DESKTOP DEFAULT LAYOUT (50/50 SPLIT)
+       ========================================================= */
+    .container {
+      display: flex;
+      width: 100vw;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Left Side: Off-white / light grey */
+    .left-side {
+      flex: 43%;
+      background-color: #f1f3f9;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 32px;
+    }
+
+    /* Right Side: Periwinkle blue */
+    .right-side {
+      flex: 57%;
+      background-color: #8397ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Tom & Jerry illustration overlapping split */
+    .character-img {
+      position: absolute;
+      top: 2%;
+      left: 1%;
+      width: 62vw;
+      max-width: 900px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Bottom-left quote */
+    .quote {
+      position: relative;
+      z-index: 6;
+      font-size: clamp(1rem, 2.2vw, 1.7rem);
+      font-style: italic;
+      font-weight: bold;
+      color: #000000;
+      max-width: 480px;
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    /* Center-right White Card */
+    .card {
+      background-color: #ffffff;
+      border: 2px solid #000000;
+      width: 330px;
+      padding: 16px 20px 22px;
+      text-align: center;
+      z-index: 6;
+    }
+
+    .card h1 {
+      font-size: 2.3rem;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 12px;
+    }
+
+    /* Outer Blue Button wrapper */
+    .btn-outer {
+      display: block;
+      background-color: #798dff;
+      border-radius: 8px;
+      padding: px px;
+      text-decoration: none;
+      box-sizing: border-box;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+
+      /* 3D push-down effect */
+      box-shadow: 0 4px 0 #526be3;
+      transform: translateY(0);
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+    }
+
+    .btn-outer:hover {
+      background-color: #6b81fc;
+    }
+
+    .btn-outer:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #526be3;
+    }
+
+    /* Inner White Button */
+    .btn-inner {
+      background-color: #ffffff;
+      border: 1px solid #707070;
+      border-radius: 6px;
+      padding: 4px 0px;
+      font-size: 1.35rem;
+      color: #000000;
+      display: block;
+      font-weight: normal;
+      transition: background-color 0.08s ease;
+    }
+
+    .btn-outer:active .btn-inner {
+      background-color: #eceff3;
+    }
+
+    .divider-text {
+      font-size: 1.3rem;
+      color: #000000;
+      margin: 8px 0;
+    }
+
+    /* Bottom-Right "Connect me" */
+    .connect-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      background: #ffffff;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+      z-index: 10;
+      transition: transform 0.1s ease;
+    }
+
+    .connect-badge:active {
+      transform: scale(0.95);
+    }
+
+    .linkedin-icon {
+      background: #0077b5;
+      color: white;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 1px 4px;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    /* =========================================================
+       MOBILE LAYOUT (MATCHES YOUR SECOND SCREENSHOT)
+       ========================================================= */
+    @media (max-width: 768px) {
+      body, html {
+        background-color: #ffffff;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0 0 24px 0;
+        background-color: #ffffff;
+        position: relative;
+      }
+
+      /* Tom and Jerry jumping in from the top */
+      .character-img {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96vw;
+        max-width: 440px;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      /* 1. Purple Box Section */
+      .right-side {
+        order: 1;
+        width: 82vw;
+        max-width: 360px;
+        height: 380px;
+        background-color: #8397ff;
+        margin-top: 160px; /* Leaves space at the top for Tom's upper body */
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end; /* Anchors the card toward the bottom of the blue block */
+        padding-bottom: 30px;
+        position: relative;
+        z-index: 2;
+        border-radius: 0;
+      }
+
+      /* White Card inside the blue box */
+      .card {
+        width: 200px;
+        padding: 14px 16px 18px;
+        position: relative;
+        z-index: 15;
+      }
+
+      .card h1 {
+        font-size: 1.9rem;
+        margin-bottom: 8px;
+      }
+
+      .btn-inner {
+        font-size: 1.15rem;
+        padding: 2px 0;
+      }
+
+      .divider-text {
+        font-size: 1.1rem;
+        margin: 4px 0;
+      }
+
+      /* 2. Quote Section Below the Blue Box */
+      .left-side {
+        order: 2;
+        flex: none;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 36px 24px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .quote {
+        font-size: 1.35rem;
+        line-height: 1.35;
+        margin-bottom: 0;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      /* 3. Connect Me Pill at the very bottom right */
+      .connect-badge {
+        order: 3;
+        position: static;
+        align-self: flex-end;
+        margin: 30px 24px 10px auto;
+        background: transparent;
+        font-size: 0.95rem;
+        gap: 6px;
+      }
+
+      .linkedin-icon {
+        border-radius: 50%;
+        padding: 3px 5px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Character Image -->
+    <img 
+      src="statics/Tom-And-Jerry.png" 
+      alt="Tom and Jerry" 
+      class="character-img"
+    />
+
+    <!-- Left / Bottom Section (Quote) -->
+    <div class="left-side">
+      <p class="quote">"Never calculate bunk margins on the back of your notebook again."</p>
+    </div>
+
+    <!-- Right / Upper Section (Blue Container & Card) -->
+    <div class="right-side">
+      <div class="card">
+        <h1>Join As</h1>
+
+        <!-- Student Option -->
+        <a href="#student" class="btn-outer">
+          <span class="btn-inner">A Student</span>
+        </a>
+
+        <div class="divider-text">Or</div>
+
+        <!-- Teacher Option -->
+        <a href="#teacher" class="btn-outer">
+          <span class="btn-inner">Teacher</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom-right Connect Button -->
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="connect-badge">
+      <span class="linkedin-icon">in</span>
+      <span>Connect me</span>
+    </a>
+  </div>
+
+</body>
+</html>
