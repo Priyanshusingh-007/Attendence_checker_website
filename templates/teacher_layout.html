@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AttendEase - Teacher Dashboard</title>
+  <link rel="stylesheet" href="../statics/teacher_layout.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="brand-title">AttendEase</h1>
+        <button class="nav-toggle d-md-none" id="sidebarCloseBtn" aria-label="Close menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#dashboard" class="sidebar-link">Dashboard</a>
+        <a href="#my-classes" class="sidebar-link active">My Classes</a>
+        <a href="#create-classes" class="sidebar-link sub-link">+create classes</a>
+        <a href="#profile" class="sidebar-link">profile</a>
+        <a href="#settings" class="sidebar-link">settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Navigation -->
+      <header class="top-header">
+        <button class="menu-open-btn d-md-none" id="sidebarOpenBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="dropdown ms-auto">
+          <button class="user-dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="user-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span>Teacher Name</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><a class="dropdown-item" href="#profile">Profile</a></li>
+            <li><a class="dropdown-item" href="#settings">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#logout">Log out</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <main class="content-container">
+        <div class="greeting-row">
+          <h2 class="greeting">Hello, &lt;teacher name&gt; <span class="wave">👋</span></h2>
+        </div>
+
+        <!-- Stat Blocks -->
+        <section class="metrics-row">
+          <div class="metric-box">
+            <span class="metric-num">3</span>
+            <span class="metric-label">classes</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-num">120</span>
+            <span class="metric-label">students</span>
+          </div>
+        </section>
+
+        <!-- Classes Section -->
+        <section class="classes-container">
+          <h3 class="section-title">My classes</h3>
+
+          <div class="classes-stack">
+            <!-- Class Item 1 -->
+            <div class="class-strip">
+              <div class="class-details">
+                <span class="class-title">CSE A</span>
+                <span class="class-subject">Data Structure</span>
+                <span class="class-count">62 students</span>
+              </div>
+              <div class="class-actions">
+                <a href="#open-cse-a" class="action-btn-primary">[Open class]</a>
+                <a href="#edit-cse-a" class="action-btn-secondary">Edit Class</a>
+              </div>
+            </div>
+
+            <!-- Class Item 2 -->
+            <div class="class-strip">
+              <div class="class-details">
+                <span class="class-title">CSE B</span>
+                <span class="class-subject">Data Structure</span>
+                <span class="class-count">62 students</span>
+              </div>
+              <div class="class-actions">
+                <a href="#open-cse-b" class="action-btn-primary">[Open class]</a>
+                <a href="#edit-cse-b" class="action-btn-secondary">[Edit Class]</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Button -->
+          <div class="bottom-action">
+            <a href="#create-classes" class="btn-create-class">+Create New class</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const openBtn = document.getElementById('sidebarOpenBtn');
+    const closeBtn = document.getElementById('sidebarCloseBtn');
+
+    openBtn.addEventListener('click', () => sidebar.classList.add('visible'));
+    closeBtn.addEventListener('click', () => sidebar.classList.remove('visible'));
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

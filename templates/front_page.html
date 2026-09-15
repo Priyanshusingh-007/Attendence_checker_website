@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Portal</title>
+  <link rel="stylesheet" href="../statics/front_page.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= HORIZONTAL HEADER / NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand text-black fw-bold" href="#">Attendance</a>
+      
+      <!-- Mobile toggle button -->
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portalNav" aria-controls="portalNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Horizontal Menu Items -->
+      <div class="collapse navbar-collapse" id="portalNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-black" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item text-black" href="#">Page 1-1</a></li>
+              <li><a class="dropdown-item text-black" href="#">Page 1-2</a></li>
+              <li><a class="dropdown-item text-black" href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">Page 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-black" href="#">Page 3</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="connect-badge">
+              <span class="linkedin-icon">in</span>
+              <span>Connect me</span>
+            </a>            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Body Content -->
+  <div class="portal-wrapper">
+    <!-- Character Image -->
+    <img 
+      src="../statics/Tom-And-Jerry.png" 
+      alt="Tom and Jerry" 
+      class="character-img"
+    />
+
+    <!-- Left Section -->
+    <div class="left-side">
+      <p class="quote">"Never calculate bunk margins on the back of your notebook again."</p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-side">
+      <div class="card join-card">
+        <h1>Join As</h1>
+
+        <!-- Student Option -->
+        <a href="#student" class="btn-outer">
+          <span class="btn-inner">A Student</span>
+        </a>
+
+        <div class="divider-text text-secondary-emphasis">Or</div>
+
+        <!-- Teacher Option -->
+        <a href="#teacher" class="btn-outer">
+          <span class="btn-inner">Teacher</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Required for Bootstrap 5 Dropdowns & Responsive Toggles -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+.sidebar {
+  width: 250px;
+  background-color: #3f2b4c; /* Slightly richer deep violet */
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 18px;
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-link {
+  font-size: 0.95rem;
+  color: #d8cfe0;
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #31213c;
+  color: #ffffff;
+}
+
+.sidebar-link.active {
+  background-color: #2b1d35;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-link.sub-link {
+  font-size: 0.9rem;
+  padding-left: 26px;
+  color: #c9bed2;
+}
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.top-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 36px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff;
+}
+
+.user-dropdown-btn {
+  background: none;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.user-dropdown-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.user-icon {
+  fill: #4f46e5;
+}
+
+/* =========================================================
+   WORKSPACE CONTENT
+   ========================================================= */
+.content-container {
+  padding: 36px 40px;
+  max-width: 960px;
+  width: 100%;
+}
+
+.greeting-row {
+  margin-bottom: 24px;
+}
+
+.greeting {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.3px;
+}
+
+/* Stat Blocks */
+.metrics-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.metric-box {
+  background-color: #8397ff;
+  width: 170px;
+  height: 90px;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 2px 6px rgba(131, 151, 255, 0.2);
+  transition: transform 0.12s ease;
+}
+
+.metric-box:hover {
+  transform: translateY(-2px);
+}
+
+.metric-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Classes Section */
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #0f172a;
+}
+
+.classes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.class-strip {
+  background-color: #8397ff;
+  padding: 18px 24px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(131, 151, 255, 0.15);
+  transition: box-shadow 0.15s ease;
+}
+
+.class-strip:hover {
+  box-shadow: 0 4px 12px rgba(131, 151, 255, 0.28);
+}
+
+.class-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.class-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.class-subject {
+  font-size: 0.92rem;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.class-count {
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+/* Action Links / Buttons */
+.class-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.action-btn-primary {
+  background-color: #ffffff;
+  color: #0f172a;
+  padding: 5px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.12s ease;
+}
+
+.action-btn-primary:hover {
+  background-color: #f1f5f9;
+  color: #000;
+}
+
+.action-btn-secondary {
+  color: #1e293b;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 2px 6px;
+  transition: color 0.12s ease;
+}
+
+.action-btn-secondary:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* Bottom Create Class Button */
+.bottom-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-create-class {
+  background-color: #7b81b8;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+
+.btn-create-class:hover {
+  background-color: #6c72aa;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   HAMBURGER BUTTONS (MOBILE)
+   ========================================================= */
+.nav-toggle,
+.menu-open-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.menu-open-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #1e293b;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .top-header {
+    padding: 0 16px;
+  }
+
+  .content-container {
+    padding: 20px 16px;
+  }
+
+  .metrics-row {
+    gap: 12px;
+  }
+
+  .metric-box {
+    flex: 1;
+    width: auto;
+  }
+
+  .class-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .class-actions {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+}

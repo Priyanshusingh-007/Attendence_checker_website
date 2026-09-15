@@ -1,0 +1,248 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Times New Roman", Times, serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+/* 1. Navbar Items: Darken on pointer hover */
+.custom-navbar .nav-link:hover,
+.custom-navbar .dropdown-item:hover,
+.custom-navbar .navbar-brand:hover {
+  background-color: #8397ff !important; /* Deep dark background */
+  color: #ffffff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* =========================================================
+   DESKTOP DEFAULT LAYOUT
+   ========================================================= */
+.portal-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left Side */
+.left-side {
+  flex: 0 0 45%;
+  background-color: #f1f3f9;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Right Side */
+.right-side {
+  flex: 0 0 55%;
+  background-color: #8397ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+}
+
+/* Tom & Jerry illustration */
+.character-img {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  width: min(55vw, 650px);
+  max-height: 60vh;
+  object-fit: contain;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Bottom-left quote */
+.quote {
+  position: relative;
+  z-index: 6;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-style: italic;
+  font-weight: bold;
+  color: #000000;
+  max-width: 440px;
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+}
+
+/* Center-right Card */
+.join-card {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  width: 100%;
+  max-width: 320px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  position: relative;
+  z-index: 7;
+}
+
+.join-card h1 {
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn-outer {
+  display: block;
+  background-color: #798dff;
+  border-radius: 8px;
+  padding: 2px; /* Fixed invalid padding */
+  text-decoration: none;
+  box-shadow: 0 4px 0 #526be3;
+  transform: translateY(0);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+}
+
+.btn-outer:hover {
+  background-color: #6b81fc;
+}
+
+.btn-outer:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #526be3;
+}
+
+.btn-inner {
+  background-color: #ffffff;
+  border: 1px solid #707070;
+  border-radius: 6px;
+  padding: 6px 0;
+  font-size: 1.25rem;
+  color: #000000;
+  display: block;
+  transition: background-color 0.08s ease;
+}
+
+.btn-outer:active .btn-inner {
+  background-color: #eceff3;
+}
+
+.divider-text {
+  font-size: 1.2rem;
+  color: #000000;
+  margin: 10px 0;
+}
+
+/* Bottom-Right "Connect me" */
+.connect-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.linkedin-icon {
+  background: #0077b5;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 1px 5px;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   TABLET & INTERMEDIATE SCREENS (Prevents overlapping)
+   ========================================================= */
+@media (max-width: 992px) and (min-width: 769px) {
+  .character-img {
+    width: 48vw;
+    top: 8%;
+  }
+
+  .left-side {
+    flex: 0 0 40%;
+  }
+
+  .right-side {
+    flex: 0 0 60%;
+  }
+}
+
+/* =========================================================
+   MOBILE LAYOUT (<= 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+  .portal-wrapper {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
+
+  .character-img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    max-width: 360px;
+    margin: 10px auto -30px auto;
+  }
+
+  .right-side {
+    order: 1;
+    width: 88vw;
+    max-width: 360px;
+    height: auto;
+    min-height: 320px;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    align-items: center;
+  }
+
+  .join-card {
+    max-width: 260px;
+  }
+
+  .left-side {
+    order: 2;
+    width: 100%;
+    background-color: transparent;
+    padding: 24px 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .quote {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .connect-badge {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    order: 3;
+    margin-top: 10px;
+    align-self: center;
+  }
+}
