@@ -11,27 +11,28 @@ body, html {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-/* 1. Navbar Items: Darken on pointer hover */
+
+.custom-navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .custom-navbar .nav-link:hover,
 .custom-navbar .dropdown-item:hover,
 .custom-navbar .navbar-brand:hover {
-  background-color: #8397ff !important; /* Deep dark background */
+  background-color: #8397ff !important;
   color: #ffffff !important;
   transition: background-color 0.2s ease;
 }
 
-/* =========================================================
-   DESKTOP DEFAULT LAYOUT
-   ========================================================= */
 .portal-wrapper {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   position: relative;
   overflow: hidden;
 }
 
-/* Left Side */
 .left-side {
   flex: 0 0 45%;
   background-color: #f1f3f9;
@@ -42,7 +43,6 @@ body, html {
   padding: clamp(1.5rem, 4vw, 3rem);
 }
 
-/* Right Side */
 .right-side {
   flex: 0 0 55%;
   background-color: #8397ff;
@@ -53,7 +53,6 @@ body, html {
   padding: 2rem;
 }
 
-/* Tom & Jerry illustration */
 .character-img {
   position: absolute;
   top: 5%;
@@ -65,7 +64,6 @@ body, html {
   pointer-events: none;
 }
 
-/* Bottom-left quote */
 .quote {
   position: relative;
   z-index: 6;
@@ -78,7 +76,6 @@ body, html {
   margin-bottom: 1.5rem;
 }
 
-/* Center-right Card */
 .join-card {
   background-color: #ffffff;
   border: 2px solid #000000;
@@ -98,16 +95,16 @@ body, html {
   margin-bottom: 1rem;
 }
 
-/* Buttons */
 .btn-outer {
   display: block;
   background-color: #798dff;
   border-radius: 8px;
-  padding: 2px; /* Fixed invalid padding */
+  padding: 2px;
   text-decoration: none;
   box-shadow: 0 4px 0 #526be3;
   transform: translateY(0);
   transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease;
+  cursor: pointer;
 }
 
 .btn-outer:hover {
@@ -140,11 +137,7 @@ body, html {
   margin: 10px 0;
 }
 
-/* Bottom-Right "Connect me" */
 .connect-badge {
-  position: absolute;
-  bottom: 20px;
-  right: 24px;
   background: #ffffff;
   padding: 4px 10px;
   border-radius: 6px;
@@ -156,7 +149,6 @@ body, html {
   font-family: Arial, sans-serif;
   font-size: 0.85rem;
   font-weight: bold;
-  z-index: 10;
 }
 
 .linkedin-icon {
@@ -169,27 +161,15 @@ body, html {
   line-height: 1.2;
 }
 
-/* =========================================================
-   TABLET & INTERMEDIATE SCREENS (Prevents overlapping)
-   ========================================================= */
 @media (max-width: 992px) and (min-width: 769px) {
   .character-img {
     width: 48vw;
     top: 8%;
   }
-
-  .left-side {
-    flex: 0 0 40%;
-  }
-
-  .right-side {
-    flex: 0 0 60%;
-  }
+  .left-side { flex: 0 0 40%; }
+  .right-side { flex: 0 0 60%; }
 }
 
-/* =========================================================
-   MOBILE LAYOUT (<= 768px)
-   ========================================================= */
 @media (max-width: 768px) {
   .portal-wrapper {
     flex-direction: column;
@@ -197,7 +177,6 @@ body, html {
     overflow-y: auto;
     padding-bottom: 20px;
   }
-
   .character-img {
     position: relative;
     top: 0;
@@ -206,7 +185,6 @@ body, html {
     max-width: 360px;
     margin: 10px auto -30px auto;
   }
-
   .right-side {
     order: 1;
     width: 88vw;
@@ -215,34 +193,13 @@ body, html {
     min-height: 320px;
     padding: 2rem 1rem;
     border-radius: 8px;
-    align-items: center;
   }
-
-  .join-card {
-    max-width: 260px;
-  }
-
+  .join-card { max-width: 260px; }
   .left-side {
     order: 2;
     width: 100%;
     background-color: transparent;
     padding: 24px 20px;
     text-align: center;
-    align-items: center;
-  }
-
-  .quote {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 0;
-  }
-
-  .connect-badge {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    order: 3;
-    margin-top: 10px;
-    align-self: center;
   }
 }

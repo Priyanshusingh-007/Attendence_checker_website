@@ -37,7 +37,7 @@ body, html {
 }
 
 .brand-title {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
@@ -69,10 +69,9 @@ body, html {
   font-weight: 600;
 }
 
-.sidebar-link.sub-link {
-  font-size: 0.9rem;
-  padding-left: 26px;
-  color: #c9bed2;
+.logout-link {
+  margin-top: auto;
+  color: #f87171;
 }
 
 .main-wrapper {
@@ -116,65 +115,67 @@ body, html {
   width: 100%;
 }
 
-.greeting-row {
-  margin-bottom: 24px;
-}
-
 .greeting {
   font-size: 1.6rem;
   font-weight: 600;
   color: #0f172a;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #0f172a;
+}
+
+.attendance-overview {
+  margin-bottom: 36px;
 }
 
 .metrics-row {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 36px;
 }
 
 .metric-box {
   background-color: #8397ff;
-  width: 170px;
-  height: 90px;
-  padding: 16px;
+  width: 180px;
+  height: 96px;
+  padding: 16px 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  box-shadow: 0 2px 6px rgba(131, 151, 255, 0.2);
 }
 
 .metric-num {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.55rem;
+  font-weight: 800;
   color: #0f172a;
   line-height: 1.1;
 }
 
-.metric-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #1e293b;
+.metric-num.text-success {
+  color: #064e3b !important;
 }
 
-.section-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  color: #0f172a;
+.metric-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 4px;
 }
 
 .classes-stack {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-bottom: 24px;
 }
 
 .class-strip {
   background-color: #8397ff;
-  padding: 18px 24px;
+  padding: 20px 24px;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -184,73 +185,54 @@ body, html {
 .class-details {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .class-title {
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 800;
+  font-size: 1.15rem;
   color: #0f172a;
 }
 
 .class-subject {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: #1e293b;
 }
 
-.class-count {
-  font-size: 0.85rem;
-  color: #334155;
+.attendance-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
 }
 
-.class-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+.class-attendance {
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.status-pill.ok {
+  background-color: #dcfce7;
+  color: #166534;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 
 .action-btn-primary {
   background-color: #ffffff;
   color: #0f172a;
-  padding: 5px 12px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 6px;
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .action-btn-primary:hover {
   background-color: #f1f5f9;
-}
-
-.action-btn-secondary {
-  color: #1e293b;
-  text-decoration: none;
-  font-size: 0.85rem;
-}
-
-.action-btn-secondary:hover {
-  text-decoration: underline;
-}
-
-.bottom-action {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.btn-create-class {
-  background-color: #7b81b8;
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 22px;
-  border-radius: 6px;
-}
-
-.btn-create-class:hover {
-  background-color: #6c72aa;
 }
 
 .nav-toggle,
@@ -292,13 +274,11 @@ body, html {
   .class-strip {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 16px;
   }
   .class-actions {
-    flex-direction: row;
-    align-items: center;
     width: 100%;
+    display: flex;
     justify-content: flex-end;
-    gap: 12px;
   }
 }

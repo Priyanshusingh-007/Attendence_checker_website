@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Portal — Student Dashboard</title>
+  <!-- Direct static link to statics/student_layout.css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='student_layout.css') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="brand-title">Attendance Portal</h1>
+        <button class="nav-toggle d-md-none" id="sidebarCloseBtn"><span></span><span></span><span></span></button>
+      </div>
+      <nav class="sidebar-menu">
+        <a href="{{ url_for('student_dashboard') }}" class="sidebar-link active">Dashboard</a>
+        <a href="#myClasses" class="sidebar-link">My Classes</a>
+        <a href="{{ url_for('complete_profile') }}" class="sidebar-link">Profile</a>
+        <a href="{{ url_for('logout') }}" class="sidebar-link logout-link">Logout</a>
+      </nav>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-open-btn d-md-none" id="sidebarOpenBtn"><span></span><span></span><span></span></button>
+
+        <div class="dropdown ms-auto">
+          <button class="user-dropdown-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <img src="{{ student.avatar_url or 'https://via.placeholder.com/28' }}" class="rounded-circle" width="24" height="24" alt="Avatar">
+            <span>{{ student.name }}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+            <li><span class="dropdown-item-text text-muted small">Roll: {{ student.enrollment_no }}</span></li>
+            <li><span class="dropdown-item-text text-muted small">{{ student.college }}</span></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('complete_profile') }}">Edit Profile</a></li>
+            <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}">Log out</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="content-container">
+        <h2 class="greeting">Hello, {{ student.name }} &#128075;</h2>
+
+        <section class="attendance-overview">
+          <h3 class="section-title">My Attendance</h3>
+          <div class="metrics-row">
+            <div class="metric-box">
+              <span class="metric-num text-success">{{ overall_percentage }}%</span>
+              <span class="metric-label">Attendance</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">{{ total_attended }}</span>
+              <span class="metric-label">Sessions Present</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="classes-container" id="myClasses">
+          <h3 class="section-title">My Classes</h3>
+
+          {% if not classes %}
+            <div class="card p-4 text-center border-dashed">
+              <p class="text-muted mb-0">You are not currently enrolled in any class rosters.</p>
+            </div>
+          {% endif %}
+
+          <div class="classes-stack">
+            {% for c in classes %}
+            <div class="class-strip">
+              <div class="class-details">
+                <span class="class-title">{{ c.name }} (Section {{ c.section }})</span>
+                <span class="class-subject">{{ c.subject }} &bull; Prof. {{ c.teacher_name }}</span>
+                <div class="attendance-badge-row">
+                  <span class="class-attendance">Attendance: <strong>{{ c.percentage }}%</strong> ({{ c.presents }}/{{ c.total_sessions }})</span>
+                  {% if c.percentage >= 75 %}
+                    <span class="status-pill ok">Safe Margin</span>
+                  {% else %}
+                    <span class="status-pill text-danger bg-danger-subtle">Low Margin</span>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="class-actions">
+                <a href="{{ url_for('student_class_attendance_view', class_id=c.class_id) }}" class="action-btn-primary">[view Attendance]</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const openBtn = document.getElementById('sidebarOpenBtn');
+    const closeBtn = document.getElementById('sidebarCloseBtn');
+    if (openBtn) openBtn.addEventListener('click', () => sidebar.classList.add('visible'));
+    if (closeBtn) closeBtn.addEventListener('click', () => sidebar.classList.remove('visible'));
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
